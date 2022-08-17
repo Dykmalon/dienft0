@@ -21,12 +21,9 @@ export default NextAuth({
         brandColor: "#FFFFFF",
     },
     secret: process.env.NEXTAUTH_SECRET,
-    callback: {
-    async jwt({token}): {
-        token.userRole = "user"
-        return token
-        
-    },
+    jwt: {
+        secret: process.env.NEXTAUTH_SECRET,
+        encryption: true
     },
 
     callbacks: {
